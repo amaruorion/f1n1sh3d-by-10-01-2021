@@ -433,24 +433,24 @@ function emeraldPlace () {
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.mineral, function (sprite, otherSprite) {
     if (isAHold) {
-        if (otherSprite == amber) {
+        if (amber.image == 0) {
             otherSprite.destroy(effects.disintegrate, 1000)
-        } else if (otherSprite == amber) {
-        	
-        } else if (false) {
-        	
-        } else if (false) {
-        	
-        } else if (false) {
-        	
-        } else if (false) {
-        	
-        } else if (false) {
-        	
-        } else if (false) {
-        	
-        } else if (false) {
-        	
+        } else if (coal.image == 0) {
+            otherSprite.destroy(effects.disintegrate, 100)
+        } else if (diamond.image == 0) {
+            otherSprite.destroy(effects.disintegrate, 15000)
+        } else if (emerald.image == 0) {
+            otherSprite.destroy(effects.disintegrate, 10000)
+        } else if (gold.image == 0) {
+            otherSprite.destroy(effects.disintegrate, 500)
+        } else if (iron.image == 0) {
+            otherSprite.destroy(effects.disintegrate, 300)
+        } else if (jadeite.image == 0) {
+            otherSprite.destroy(effects.disintegrate, 30000)
+        } else if (ruby.image == 0) {
+            otherSprite.destroy(effects.disintegrate, 5000)
+        } else if (sapphire.image == 0) {
+            otherSprite.destroy(effects.disintegrate, 3000)
         }
     }
 })
