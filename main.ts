@@ -7,13 +7,9 @@ namespace StatusBarKind {
 /**
  * Stats:
  * 
- * 41 variables
+ * 427 blocks
  * 
- * 11 functions
- * 
- * 307 blocks
- * 
- * Time: 210 minutes
+ * Time: 240 minutes
  */
 /**
  * Minerals:
@@ -46,19 +42,6 @@ namespace StatusBarKind {
  * 
  * None
  */
-// Stats:
-// 
-// 10 functions
-// 
-// 27 variables
-// 
-// 289 blocks
-// 
-// 430 Python lines
-// 
-// 412 JavaScript lines
-// 
-// Time: 2 hours
 function ironPlace () {
     if (ironDecide == 0) {
         grid.place(iron, tiles.getTileLocation(5, 0))
@@ -450,7 +433,25 @@ function emeraldPlace () {
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.mineral, function (sprite, otherSprite) {
     if (isAHold) {
-        otherSprite.destroy(effects.disintegrate, 1000)
+        if (otherSprite == amber) {
+            otherSprite.destroy(effects.disintegrate, 1000)
+        } else if (otherSprite == amber) {
+        	
+        } else if (false) {
+        	
+        } else if (false) {
+        	
+        } else if (false) {
+        	
+        } else if (false) {
+        	
+        } else if (false) {
+        	
+        } else if (false) {
+        	
+        } else if (false) {
+        	
+        }
     }
 })
 function amberPlace () {
