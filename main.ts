@@ -359,34 +359,7 @@ function _set () {
     sapphirePlace()
 }
 function setStatusBar () {
-    amberStatus = statusbars.create(20, 4, StatusBarKind.resource)
-    amberStatus.setPosition(15, 10)
-    amberStatus.setLabel("amber: ", 15)
-    coalStatus = statusbars.create(20, 4, StatusBarKind.resource)
-    coalStatus.setPosition(amberStatus.x + 45, 10)
-    coalStatus.setLabel("coal: ", 15)
-    diamondStatus = statusbars.create(20, 4, StatusBarKind.resource)
-    diamondStatus.setPosition(15, 25)
-    diamondStatus.setLabel("diamond: ", 15)
-    emeraldStatus = statusbars.create(20, 4, StatusBarKind.resource)
-    emeraldStatus.setPosition(diamondStatus.x + 50, 25)
-    emeraldStatus.setLabel("emerald: ", 15)
-    goldStatus = statusbars.create(20, 4, StatusBarKind.resource)
-    goldStatus.setPosition(15, 40)
-    goldStatus.setLabel("gold: ", 15)
-    ironStatus = statusbars.create(20, 4, StatusBarKind.resource)
-    ironStatus.setPosition(goldStatus.x + 45, 40)
-    ironStatus.setLabel("iron: ", 15)
-    jaditeStatus = statusbars.create(20, 4, StatusBarKind.resource)
-    jaditeStatus.setPosition(15, 55)
-    jaditeStatus.setLabel("jadeite: ", 15)
-    rubyStatus = statusbars.create(20, 4, StatusBarKind.resource)
-    rubyStatus.setPosition(jaditeStatus.x + 55, 55)
-    rubyStatus.setLabel("ruby: ", 15)
-    sapphireStatus = statusbars.create(20, 4, StatusBarKind.resource)
-    sapphireStatus.setPosition(15, 70)
-    sapphireStatus.setLabel("sapphire: ", 15)
-    setValue()
+    createStatus = true
 }
 function jadeitePlace () {
     let jaditePlace = 0
@@ -452,6 +425,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.mineral, function (sprite, other
             . . . . . . . . . . . . . . . . 
             `) {
             otherSprite.destroy(effects.disintegrate, 1000)
+            amberStatus.value += 10
         } else if (otherSprite.image == img`
             . . . . . . . . . . . . . . . . 
             . . . . . . 1 1 . . . . . . . . 
@@ -471,6 +445,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.mineral, function (sprite, other
             . . . 1 1 1 1 . . . . . . . . . 
             `) {
             otherSprite.destroy(effects.disintegrate, 100)
+            coalStatus.value += 10
         } else if (otherSprite.image == img`
             . . . . . . . . . . . . . . . . 
             . . . . 1 1 1 1 1 1 1 1 . . . . 
@@ -490,6 +465,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.mineral, function (sprite, other
             . . . . . . . . . . . . . . . . 
             `) {
             otherSprite.destroy(effects.disintegrate, 15000)
+            diamondStatus.value += 10
         } else if (otherSprite.image == img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -509,6 +485,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.mineral, function (sprite, other
             . . . . . . . . . . . . . . . . 
             `) {
             otherSprite.destroy(effects.disintegrate, 10000)
+            emeraldStatus.value += 10
         } else if (otherSprite.image == img`
             . . . . . . . . . . . . . . . . 
             . . 1 1 1 . . . . . . . . . . . 
@@ -528,6 +505,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.mineral, function (sprite, other
             . . . . . . . . . . . . . . . . 
             `) {
             otherSprite.destroy(effects.disintegrate, 500)
+            goldStatus.value += 10
         } else if (otherSprite.image == img`
             . . . . . . . . . . . . . . . . 
             . . 1 1 1 . . . . . . . . . . . 
@@ -547,6 +525,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.mineral, function (sprite, other
             . . . . . . . . . . . . . . . . 
             `) {
             otherSprite.destroy(effects.disintegrate, 300)
+            ironStatus.value += 10
         } else if (otherSprite.image == img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -566,6 +545,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.mineral, function (sprite, other
             . . . . . . . . . . . . . . . . 
             `) {
             otherSprite.destroy(effects.disintegrate, 30000)
+            jaditeStatus.value += 10
         } else if (otherSprite.image == img`
             . . . . . . . . . . . . . . . . 
             . . . . 1 1 1 1 1 1 1 1 . . . . 
@@ -585,6 +565,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.mineral, function (sprite, other
             . . . . . . . . . . . . . . . . 
             `) {
             otherSprite.destroy(effects.disintegrate, 5000)
+            rubyStatus.value += 10
         } else if (otherSprite.image == img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -604,6 +585,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.mineral, function (sprite, other
             . . . . . . . . . . . . . . . . 
             `) {
             otherSprite.destroy(effects.disintegrate, 3000)
+            sapphireStatus.value += 10
         }
     }
 })
@@ -631,6 +613,7 @@ function diamondPlace () {
         grid.place(diamond, tiles.getTileLocation(5, 7))
     }
 }
+let isValueSet = false
 let diamondDecide = 0
 let amberDecide = 0
 let isAHold = false
@@ -644,6 +627,7 @@ let emeraldStatus: StatusBarSprite = null
 let diamondStatus: StatusBarSprite = null
 let coalStatus: StatusBarSprite = null
 let amberStatus: StatusBarSprite = null
+let createStatus = false
 let amber: Sprite = null
 let jadeite: Sprite = null
 let emerald: Sprite = null
@@ -718,5 +702,40 @@ game.onUpdateInterval(1000, function () {
     }
 })
 forever(function () {
-    music.playMelody("G B A G C5 B A B ", 300)
+    music.playMelody("F E F C A G A B ", 275)
+})
+forever(function () {
+    if (createStatus) {
+        amberStatus = statusbars.create(20, 4, StatusBarKind.resource)
+        amberStatus.setPosition(15, 10)
+        amberStatus.setLabel("amber: ", 15)
+        coalStatus = statusbars.create(20, 4, StatusBarKind.resource)
+        coalStatus.setPosition(amberStatus.x + 45, 10)
+        coalStatus.setLabel("coal: ", 15)
+        diamondStatus = statusbars.create(20, 4, StatusBarKind.resource)
+        diamondStatus.setPosition(15, 25)
+        diamondStatus.setLabel("diamond: ", 15)
+        emeraldStatus = statusbars.create(20, 4, StatusBarKind.resource)
+        emeraldStatus.setPosition(diamondStatus.x + 50, 25)
+        emeraldStatus.setLabel("emerald: ", 15)
+        goldStatus = statusbars.create(20, 4, StatusBarKind.resource)
+        goldStatus.setPosition(15, 40)
+        goldStatus.setLabel("gold: ", 15)
+        ironStatus = statusbars.create(20, 4, StatusBarKind.resource)
+        ironStatus.setPosition(goldStatus.x + 45, 40)
+        ironStatus.setLabel("iron: ", 15)
+        jaditeStatus = statusbars.create(20, 4, StatusBarKind.resource)
+        jaditeStatus.setPosition(15, 55)
+        jaditeStatus.setLabel("jadeite: ", 15)
+        rubyStatus = statusbars.create(20, 4, StatusBarKind.resource)
+        rubyStatus.setPosition(jaditeStatus.x + 55, 55)
+        rubyStatus.setLabel("ruby: ", 15)
+        sapphireStatus = statusbars.create(20, 4, StatusBarKind.resource)
+        sapphireStatus.setPosition(15, 70)
+        sapphireStatus.setLabel("sapphire: ", 15)
+        if (!(isValueSet)) {
+            setValue()
+            isValueSet = true
+        }
+    }
 })
